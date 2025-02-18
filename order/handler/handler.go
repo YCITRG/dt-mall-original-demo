@@ -1,0 +1,56 @@
+package handler
+
+import (
+	"github.com/gin-gonic/gin"
+	"order/entity"
+	"order/service"
+	"order/svc"
+	"order/utility"
+)
+
+func OrderCreateHandler(svc *svc.ServiceContext) gin.HandlerFunc {
+	return utility.WrapHandler(func(c *gin.Context) interface{} {
+		var req entity.OrderCreateReq
+		err := c.BindJSON(&req)
+		if err != nil {
+			panic(err)
+		}
+		if req.UserID == 0 {
+			panic("user_id not specified")
+		}
+		if req.OrderItems == nil {
+			panic("order_items not specified")
+		}
+		s := service.NewOrderService(c, svc)
+		data, err := s.OrderCreate(&req)
+		if err != nil {
+			entity.ResUnKnowError.WithError(err.Error())
+		}
+		return entity.ResOk.WithData(data)
+	})
+}
+
+func OrderEnsureHandler(svc *svc.ServiceContext) gin.HandlerFunc {
+	return utility.WrapHandler(func(c *gin.Context) interface{} {
+		var req entity.OrderEnsureReq
+		err := c.BindJSON(&req)
+		if err != nil {
+			panic(err)
+		}
+		if req.UserID == 0 {
+			panic("user_id not specified")
+		}
+		if req.OrderID == 0 {
+			panic("order_id not specified")
+		}
+		if req.DiscountAmount == 0 {
+			panic("discount_amount not specified")
+		}
+		s := service.NewOrderService(c, svc)
+		data, err := s.OrderEnsure(&req)
+		if err != nil {
+			return entity.ResUnKnowError.WithError(err.Error())
+		}
+		return entity.ResOk.WithData(data)
+	})
+}
