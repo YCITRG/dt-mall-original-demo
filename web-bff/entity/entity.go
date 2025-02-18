@@ -14,8 +14,10 @@ type Coupon struct {
 }
 
 type OrderCreateReq struct {
-	Coupon     Coupon      `json:"coupon"`
-	OrderItems []OrderItem `json:"order_items"`
+	OrderID     int64       `json:"order_id"`
+	Coupon      Coupon      `json:"coupon"`
+	OrderItems  []OrderItem `json:"order_items"`
+	TotalAmount float64     `json:"total_amount"`
 }
 
 type Order struct {

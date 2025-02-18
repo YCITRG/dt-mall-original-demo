@@ -15,8 +15,8 @@ func NewCouponDao(c *gin.Context, svcCtx *svc.ServiceContext) *CouponDao {
 	return &CouponDao{c: c, svcCtx: svcCtx}
 }
 
-func (receiver CouponDao) CouponUse(userID, couponID int64, discountAmount float64) error {
-	r, err := receiver.svcCtx.DB.Exec("update tb_coupon set is_used=true where user_id=? and coupon_id = ? and is_used = false and now() <= expiration_date and discount_amount = ?", userID, couponID, discountAmount)
+func (receiver CouponDao) CouponUse(userID, couponID int64, discountAmount int64) error {
+	r, err := receiver.svcCtx.DB.Exec("update tb_coupon set is_used=1 where user_id=? and coupon_id = ? and is_used = 0 and now() <= expiration_date and discount_amount = ?", userID, couponID, discountAmount)
 	if err != nil {
 		return err
 	}

@@ -22,7 +22,7 @@ func (receiver *CouponClient) UseCoupon(userID, orderID, couponID int64, discoun
 	}
 
 	if res.Code != entity.ResOk.Code {
-		return errors.New(res.Msg)
+		return errors.New(res.Msg + ": " + res.Error)
 	}
 	return nil
 }

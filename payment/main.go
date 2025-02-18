@@ -17,7 +17,7 @@ func main() {
 	c := conf.Config{
 		AppApiPrefix: "/api/payment",
 		AppPort:      8084,
-		DSN:          "root:mYsql123456_@tcp(192.168.9.218:3306)/yecao_mall_payment",
+		DSN:          "root:mYsql123456_@tcp(192.168.27.218:3306)/yecao_mall_payment",
 	}
 
 	logger.InitLog("debug")

@@ -70,13 +70,13 @@ DROP TABLE IF EXISTS tb_coupon;
 CREATE TABLE tb_coupon
 (
     id              BIGINT PRIMARY KEY AUTO_INCREMENT,
-    coupon_id       BIGINT         NOT NULL COMMENT '优惠券ID',
-    user_id         BIGINT         NOT NULL COMMENT '用户ID',
-    discount_amount DECIMAL(10, 2) NOT NULL COMMENT '优惠金额',
-    expiration_date DATE           NOT NULL COMMENT '过期日期',
-    is_used         BOOLEAN        NOT NULL DEFAULT FALSE COMMENT '是否已使用',
-    created_time    datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_time    datetime       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    coupon_id       BIGINT   NOT NULL COMMENT '优惠券ID',
+    user_id         BIGINT   NOT NULL COMMENT '用户ID',
+    discount_amount INT      NOT NULL COMMENT '优惠金额',
+    expiration_date DATE     NOT NULL COMMENT '过期日期',
+    is_used         BOOLEAN  NOT NULL DEFAULT FALSE COMMENT '是否已使用',
+    created_time    datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_time    datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE key (coupon_id),
     UNIQUE key (user_id, coupon_id)
 );

@@ -9,8 +9,11 @@ type OrderItem struct {
 }
 
 type OrderCreateReq struct {
-	UserID     int64       `json:"user_id"`
-	OrderItems []OrderItem `json:"order_items"`
+	OrderID        int64       `json:"order_id"`
+	UserID         int64       `json:"user_id"`
+	OrderItems     []OrderItem `json:"order_items"`
+	CouponID       int64       `json:"coupon_id"`
+	DiscountAmount int64       `json:"discount_amount"`
 }
 
 type OrderEnsureReq struct {

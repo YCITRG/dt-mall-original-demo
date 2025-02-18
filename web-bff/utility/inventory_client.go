@@ -24,7 +24,7 @@ func (receiver *InventoryClient) UseInventory(userID, orderID, productID int64, 
 	}
 
 	if res.Code != entity.ResOk.Code {
-		return errors.New(res.Msg)
+		return errors.New(res.Msg + ": " + res.Error)
 	}
 	return nil
 }

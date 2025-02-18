@@ -15,6 +15,9 @@ func OrderCreateHandler(svc *svc.ServiceContext) gin.HandlerFunc {
 		if err != nil {
 			panic(err)
 		}
+		if req.OrderID == 0 {
+			panic("order_id not specified")
+		}
 		if req.Coupon.CouponID == 0 {
 			panic("coupon_id not specified")
 		}

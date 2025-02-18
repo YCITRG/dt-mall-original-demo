@@ -23,7 +23,7 @@ func (receiver *PaymentClient) CreatePayment(userId, orderId int64, paymentAmoun
 	}
 
 	if res.Code != entity.ResOk.Code {
-		return 0, errors.New(res.Msg)
+		return 0, errors.New(res.Msg + ": " + res.Error)
 	}
 
 	return res.Data.PaymentID, nil

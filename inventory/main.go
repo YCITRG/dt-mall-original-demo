@@ -17,7 +17,7 @@ func main() {
 	c := conf.Config{
 		AppApiPrefix: "/api/inventory",
 		AppPort:      8081,
-		DSN:          "root:mYsql123456_@tcp(192.168.9.218:3306)/yecao_mall_inventory",
+		DSN:          "root:mYsql123456_@tcp(192.168.27.218:3306)/yecao_mall_inventory",
 	}
 
 	logger.InitLog("debug")
